@@ -24,20 +24,22 @@ for(x = 0; x < rows; x++) {
 
 // Use DFS to remove an island.
 function removeIsland(sea, x, y) {
+  // if element is 1
   if(sea[x][y]) {
     sea[x][y] = 0;
+    // DFS to the top
     if(x > 0) {
       removeIsland(sea, x - 1, y);
     }
-
+    // DFS to the bottom
     if(x < rows - 1) {
       removeIsland(sea, x + 1, y);
     }
-
+    // DFS to the left
     if(y > 0) {
       removeIsland(sea, x, y - 1);
     }
-
+    // DFS to the right
     if(y < columns - 1) {
       removeIsland(sea, x, y + 1);
     }
