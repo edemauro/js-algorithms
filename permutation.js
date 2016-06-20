@@ -2,6 +2,8 @@
 
 In permutations, order does matter. {a,b} is NOT the same as {b,a}
 
+n! / (n - c)!
+
 */
 
 function perm(s) {
