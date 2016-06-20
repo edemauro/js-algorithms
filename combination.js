@@ -18,8 +18,8 @@ function combHelper(prefix, string) {
       console.log(prefix);
   }
 
-  // for each character, we print said character and print the subsets of said
-  // character using the remaining characters after said character
+  // for each character, print the combination using the letter as a prefix
+  // and the combinations using the remaining characters after said character
   for(let i = 0; i < string.length; i++) {
     combHelper(prefix + string.charAt(i), string.substring(i + 1));
   }

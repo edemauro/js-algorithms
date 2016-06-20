@@ -16,8 +16,9 @@ function permHelper(prefix, string) {
       console.log(prefix);
   }
 
-  // for each character, we print said character and print the subsets of said
-  // character using the remaining characters before AND after said character
+  // for each character, print the combination using the letter as a prefix
+  // and the combinations using the remaining characters before and after said 
+  // character
   for(let i = 0; i < string.length; i++) {
     permHelper(prefix + string.charAt(i), string.slice(0, i) + string.slice(i + 1));
   }
