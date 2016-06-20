@@ -4,7 +4,7 @@
   the height of the right tree.
 */
 
-let Node = function Node(value) {
+const Node = function Node(value) {
   return {
     value: value
   }
