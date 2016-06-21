@@ -4,11 +4,11 @@
   the height of the right tree.
 */
 
-const Node = function Node(value) {
+const Node = (value) => {
   return {
     value: value
   }
-}
+};
 
 function isBalanced(root) {
   return (getHeight(root) >= 0);
