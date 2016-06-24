@@ -47,10 +47,11 @@ function shortestPath(graph, start, end) {
     let u = queue.dequeue();
     let neighbors = graph[u];
     for(vertex in neighbors) {
-      let distance = distances[u] + neighbors[vertex];
-      if(distance < distances[vertex]) {
-        distances[vertex] = distance;
+      let alt = distances[u] + neighbors[vertex];
+      if(alt < distances[vertex]) {
+        distances[vertex] = alt;
         prev[vertex] = u;
+        queue.enqueue(alt, vertex);
       }
     }
   }
