@@ -73,6 +73,6 @@ let heap = new MinHeap();
 
 console.log(heap);
 
-heap.pop();
-
-console.log(heap);
+while(heap.size() > 0) {
+  console.log(heap.pop());
+}
