@@ -39,7 +39,6 @@ function shortestPath(graph, start, end) {
       queue.enqueue(0, vertex);
     } else {
       distances[vertex] = Infinity;
-      queue.enqueue(Infinity, vertex);
     }
   }
  
