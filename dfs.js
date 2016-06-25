@@ -7,16 +7,16 @@ const graph = {
 }
 
 function dfs(start, graph) {
-  let visited = [];
+  let visited = {};
   let queue = [];
 
   queue.push(start);
 
   while(queue.length) {
     start = queue.pop();
-    if(visited.indexOf(start) === -1) {
+    if(!visited[start]) {
       console.log(start);
-      visited.push(start);
+      visited[start] = true;
       if(graph[start]) {
         graph[start].forEach((adjNode) => { queue.push(adjNode); });
       }
