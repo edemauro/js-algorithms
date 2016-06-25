@@ -1,3 +1,7 @@
+/*
+Minimum spanning tree using Prim's algorithm. Could use min heap to speed up.
+*/
+
 const vertices = {
     '1': {'2': 7, '3': 9, '6': 14},
     '2': {'1': 7, '3': 10, '4': 15},
@@ -11,25 +15,34 @@ function prim(graph) {
   let result = [];
   let unvisited = [];
   let visited = [];
-  let node = Math.floor(Math.random() * 6 + 1).toString();
+  let node = Math.floor(Math.random() * 6 + 1).toString(); // choose a random node
 
+  // add every vertex to unvisited array.
   for(vertex in graph) {
     unvisited.push(vertex);
   }
 
+  // add random initial node to visited array and remove from unvisited.
   visited.push(node);
   unvisited.splice(unvisited.indexOf(node), 1);
 
+  // while we have unvisited vertices
   while(unvisited.length !== 0) {
+    // figure out the minimum edge with one end in visited and one end in unvisited
     let edge = minEdge(unvisited, visited, graph);
-    result.push(edge);
+    // push said edge to results
+    result.push(edge);y
+    // remove the to end of the edge from the unvisited array
     unvisited.splice(unvisited.indexOf(edge.to), 1);
+    // add to end of the edge to the visited array.
     visited.push(edge.to);
   }
 
   return result;
 }
 
+// helper function to get minimum weight edge with one end in visited and one end
+// in unvisited
 function minEdge(unvisited, visited, graph) {
   let ret = null;
   let min = Infinity;
