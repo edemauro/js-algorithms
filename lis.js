@@ -1,3 +1,8 @@
+/* 
+2^n total subseqeuence (we either take the element or we don't). 
+Thus, brute force is O(2^n). O(n^2) dynamic programming implementation below.
+*/
+
 function lis(array) {
   let maxLength = 1;
   let DP = [1];
