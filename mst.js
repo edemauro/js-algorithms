@@ -11,13 +11,14 @@ function prim(graph) {
   let result = [];
   let unvisited = [];
   let visited = [];
+  let node = Math.floor(Math.random() * 6 + 1).toString();
 
   for(vertex in graph) {
     unvisited.push(vertex);
   }
 
-  visited.push('1');
-  unvisited.splice(unvisited.indexOf('1'), 1);
+  visited.push(node);
+  unvisited.splice(unvisited.indexOf(node), 1);
 
   while(unvisited.length !== 0) {
     let edge = minEdge(unvisited, visited, graph);
