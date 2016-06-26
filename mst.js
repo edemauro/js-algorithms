@@ -27,11 +27,11 @@ function prim(graph) {
   unvisited.splice(unvisited.indexOf(node), 1);
 
   // while we have unvisited vertices
-  while(unvisited.length !== 0) {
+  while(unvisited.length) {
     // figure out the minimum edge with one end in visited and one end in unvisited
     let edge = minEdge(unvisited, visited, graph);
     // push said edge to results
-    result.push(edge);y
+    result.push(edge);
     // remove the to end of the edge from the unvisited array
     unvisited.splice(unvisited.indexOf(edge.to), 1);
     // add to end of the edge to the visited array.
@@ -47,9 +47,11 @@ function minEdge(unvisited, visited, graph) {
   let ret = null;
   let min = Infinity;
 
+  // loop through each vertex in the visited set
   visited.forEach((vertex) => {
-    let edges = graph[vertex];
+    let edges = graph[vertex]; // get the adjacent edges
 
+    // find the minimum among edges that go to an unvisited vertex
     for(edge in edges) {
       if(unvisited.indexOf(edge) !== -1 && edges[edge] < min) {
         min = edges[edge];
