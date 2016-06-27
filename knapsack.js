@@ -12,18 +12,29 @@ const items = [
   { value: 12, weight: 5}
 ];
 
+let cache = [];
+
+for(let i = 0; i < items.length; i++) {
+  cache[i] = [];
+}
+
 // top down
 function recValue(items, n, S) {
   let result = 0;
   if(n === 0) { return 0; }
+
+  if(cache[n][S]) {
+    console.log('using cache');
+    return cache[n][S];
+  }
 
   if(items[n].weight > S) { 
     result = recValue(items, n - 1, S); 
   } else {
     result = Math.max(items[n].value + recValue(items, n-1, S - items[n].weight), recValue(items, n - 1, S));
   }
-
+  cache[n][S] = result;
   return result;
 }
 
-console.log(recValue(items, items.length - 1, 8));
+console.log(recValue(items, items.length - 1, 13));
