@@ -36,11 +36,13 @@ function recValue(items, n, S) {
   return result;
 }
 
+console.log(recValue(items, items.length - 1, 7));
+
 // bottom up
 function knapsack(items, capacity) {
   // initialize matrix to build up solution
   let dp = new Array(items.length + 1);
-  
+
   // fill first column w/ 0's
   for(let i = 0; i <= items.length; i++) {
     dp[i] = new Array(capacity + 1);
