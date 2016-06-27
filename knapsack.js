@@ -37,4 +37,33 @@ function recValue(items, n, S) {
   return result;
 }
 
-console.log(recValue(items, items.length - 1, 13));
+// bottom up
+function knapsack(items, capacity) {
+  let dp = new Array(items.length + 1);
+  
+  for(let i = 0; i <= items.length; i++) {
+    dp[i] = new Array(capacity + 1);
+    dp[i][0] = 0;
+  }
+
+  for(let i = 0; i <= capacity; i++) {
+    dp[0][i] = 0;
+  }
+
+  for(let n = 1; n <= items.length; n++) {
+    for(let w = 1; w <= capacity; w++) {
+      let option1 = dp[n - 1][w];
+
+      let option2 = 0;
+      if(items[n - 1].weight <= w) {
+        option2 = items[n - 1].value + dp[n - 1][w - items[n - 1].weight];
+      }
+      
+      dp[n][w] = Math.max(option1, option2);
+    }
+  }
+
+  return dp;
+}
+
+console.log(knapsack(items, 6));

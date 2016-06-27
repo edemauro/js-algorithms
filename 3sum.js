@@ -21,3 +21,5 @@ for(let i = 0; i < numbers.length - 3; i++) {
     }
   }
 }
+
+console.log(numbers);
