@@ -74,4 +74,6 @@ function knapsack(items, capacity) {
   return dp;
 }
 
+// reconstruct answer by looking at array
+// look to see if we used the item. if we used it, look at W - W(i).
 console.log(knapsack(items, 7));
