@@ -1,9 +1,9 @@
 let arr = [];
-let string1 = 'acdb';
-let string2 = 'dba';
+let string1 = 'acd';
+let string2 = 'acd';
 
 for(let i = 0; i < string1.length; i++) {
-  arr[i] = new Array(string2.length);
+  arr[i] = Array.apply(null, {length: string2.length}).map(() => {return 0;});
 }
 
 // top down
@@ -28,3 +28,29 @@ function lcs(S, n, T, m) {
 
 console.log(lcs(string1, string1.length - 1, string2, string2.length - 1));
 console.log(arr);
+
+function botLCS(S, T) {
+  let dp = [];
+  const m = S.length;
+  const n = T.length;
+
+  for(let i = 0; i < m + 1; i++) {
+    dp[i] = new Array(n + 1);
+  }
+
+  for(let i = 0; i <= m; i++) {
+    for(let j = 0; j <= n; j++) {
+      if(i === 0 || j === 0) {
+        dp[i][j] = 0;
+      } else if(S[i - 1] === T[j - 1]) {
+        dp[i][j] = 1 + dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.max(dp[i-1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  return dp;
+}
+
+console.log(botLCS(string1, string2)[string1.length][string2.length]);
