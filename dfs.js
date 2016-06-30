@@ -8,17 +8,17 @@ const graph = {
 
 function dfs(start, graph) {
   let visited = {};
-  let queue = [];
+  let stack = [];
 
-  queue.push(start);
+  stack.push(start);
 
-  while(queue.length) {
-    start = queue.pop();
+  while(stack.length) {
+    start = stack.pop();
     if(!visited[start]) {
       console.log(start);
       visited[start] = true;
       if(graph[start]) {
-        graph[start].forEach((adjNode) => { queue.push(adjNode); });
+        graph[start].forEach((adjNode) => { stack.push(adjNode); });
       }
     }
   }
