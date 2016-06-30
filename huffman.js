@@ -6,7 +6,6 @@ function Node(freq) {
   this.freq = freq;
   this.right = null;
   this.left = null;
-  this.parent = null;
 }
 
 function PriorityQueue() {
@@ -50,8 +49,6 @@ function huffman(alphabet) {
     let node2 = queue.dequeue();
     let parent = new Node(node1.freq + node2.freq);
 
-    node1.parent = parent;
-    node2.parent = parent;
     parent.left = node1;
     parent.right = node2;
 
