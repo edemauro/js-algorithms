@@ -1,7 +1,3 @@
-// https://www.cs.cmu.edu/~avrim/451f09/lectures/lect1001.pdf
-
-// https://www.youtube.com/watch?v=32LpoRHCeJA&list=PLLH73N9cB21VPj3H2xwTTye5TC8-UniA2&index=45
-
 const items = [
   { value: 7, weight: 3 },
   { value: 9, weight: 4 },
