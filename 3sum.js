@@ -1,3 +1,9 @@
+/*
+  Naive is n^3. We just check every 3-number combination w/ brute force.
+  Better is n^2. Sort first and then check every number w/ start and end
+  variables that increase or decrease.
+*/
+
 let numbers = [10, -25, 8, -10, -7, 4, -3, 2];
 
 numbers.sort((a, b) => { return a - b; });
