@@ -1,44 +1,44 @@
 const adjList = [
   [],
-  [],
-  [3],
+  [0, 3],
   [1],
-  [0, 1],
-  [2, 0]
-];
+  []
+]; 
 
 function topSort(graph) {
-  let result = [];
-  let visited = [];
-  let temp = [];
+  let visited = {};
+  let temp = {};
+  let ret = [];
 
   for(let i = 0; i < graph.length; i++) {
-    if(!visited[i] && !temp[i]) {
-      topSortHelper(i, visited, temp, graph, result);
+    if(!visited[i]) {
+      dfs(i);
     }
   }
 
-  return result;
-}
+  function dfs(v) {
+    temp[v] = true;
+    visited[v] = true;
 
-function topSortHelper(node, visited, temp, graph, result) {
-  temp[node] = true;
-  let neighbors = graph[node];
+    let adjNodes = graph[v];
 
-  for(let i = 0; i < neighbors.length; i++) {
-    let n = neighbors[i];
+    adjNodes.forEach((node) => {
+      if(temp[node]) {
+        console.log("Not a DAG.");
+        process.exit(1);
+      }
 
-    if(temp[n]) {
-      throw new Error('The graph is not a DAG.');
-    }
-    if(!visited[n]) {
-      topSortHelper(n, visited, temp, graph, result);
-    }
+      if(!visited[node]) {
+        dfs(node);
+      }
+    });
+
+    temp[v] = false;
+    ret.unshift(v);
   }
-
-  temp[node] = false;
-  visited[node] = true;
-  result.unshift(node);
+  return ret;
 }
 
-console.log(topSort(adjList));
+let sorted = topSort(adjList);
+
+sorted.forEach((a) => { console.log(a); })
