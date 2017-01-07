@@ -1,27 +1,28 @@
 const graph = {
   "one": ["two", "three"],
-  "two": ["four", "five"],
-  "three": ["six", "seven"],
-  "four": ["eight"],
-  "five": []
+  "two": ["one", "four", "five"],
+  "three": ["one", "six", "seven"],
+  "four": ["two", "eight"],
+  "five": ["two"],
+  "six": ["three"],
+  "seven": ["three"],
+  "eight": ["two"]
 }
 
-function dfs(start, graph) {
-  let visited = {};
-  let stack = [];
+let visited = {};
 
-  stack.push(start);
+function dfs(start, graph, cb) {
+  let adjList = graph[start];
 
-  while(stack.length) {
-    start = stack.pop();
-    if(!visited[start]) {
-      console.log(start);
-      visited[start] = true;
-      if(graph[start]) {
-        graph[start].forEach((adjNode) => { stack.push(adjNode); });
-      }
+  cb(start);
+
+  visited[start] = true;
+
+  adjList.forEach((adjNode) => {
+    if(!visited[adjNode]) {
+      dfs(adjNode, graph, cb);
     }
-  }
+  });
 }
 
-dfs('one', graph);
+dfs('one', graph, console.log);
