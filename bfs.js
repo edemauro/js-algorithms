@@ -16,13 +16,11 @@ function bfs(start, graph) {
   queue.push(start);
 
   while(queue.length) {
-    start = queue.shift();
-      if(!visited[start]) {
-      console.log(start);
-      visited[start] = true;
-      if(graph[start]) {
-        graph[start].forEach((adjNode) => { queue.push(adjNode); });
-      }
+    current = queue.shift();
+      if(!visited[current]) {
+        console.log(current);
+        visited[current] = true;
+        graph[current].forEach((adjNode) => { queue.push(adjNode); });
     }
   }
 }
