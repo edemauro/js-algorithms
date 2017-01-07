@@ -9,39 +9,39 @@ const sea = [
 const columns = sea[0].length;
 const rows = sea.length;
 
-let x;
-let y;
+let row;
+let column;
 let numIslands = 0;
 
-for(x = 0; x < rows; x++) {
-  for(y = 0; y < columns; y++) {
-    if(sea[x][y]) {
-      removeIsland(sea, x, y);
+for(row = 0; row < rows; row++) {
+  for(column = 0; column < columns; column++) {
+    if(sea[row][column]) {
+      removeIsland(sea, row, column);
       numIslands++;
     }
   }
 }
 
 // Use DFS to remove an island.
-function removeIsland(sea, x, y) {
+function removeIsland(sea, row, column) {
   // if element is 1
-  if(sea[x][y]) {
-    sea[x][y] = 0;
+  if(sea[row][column]) {
+    sea[row][column] = 0;
     // DFS to the top
-    if(x > 0) {
-      removeIsland(sea, x - 1, y);
+    if(row > 0) {
+      removeIsland(sea, row - 1, column);
     }
     // DFS to the bottom
-    if(x < rows - 1) {
-      removeIsland(sea, x + 1, y);
+    if(row < rows - 1) {
+      removeIsland(sea, row + 1, column);
     }
     // DFS to the left
-    if(y > 0) {
-      removeIsland(sea, x, y - 1);
+    if(column > 0) {
+      removeIsland(sea, row, column - 1);
     }
     // DFS to the right
-    if(y < columns - 1) {
-      removeIsland(sea, x, y + 1);
+    if(column < columns - 1) {
+      removeIsland(sea, row, column + 1);
     }
   }
 }
