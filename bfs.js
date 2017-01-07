@@ -1,9 +1,12 @@
 const graph = {
   "one": ["two", "three"],
-  "two": ["four", "five"],
-  "three": ["six", "seven"],
-  "four": ["eight"],
-  "five": []
+  "two": ["one", "four", "five"],
+  "three": ["one", "six", "seven"],
+  "four": ["two", "eight"],
+  "five": ["two"],
+  "six": ["three"],
+  "seven": ["three"],
+  "eight": ["two"]
 }
 
 function bfs(start, graph) {
