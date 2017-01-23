@@ -7,6 +7,13 @@ const vertices = {
     '6': {'1': 14, '3': 2, '5': 9}
 };
 
+
+/*
+
+Since this priority queue is implemented using an array rather than a heap,
+insertion and deletion are O(n) vs the O(log n) found in heaps.
+
+*/
 function PriorityQueue() {
   this.items = [];
 }
